@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Overwhelm Rescue Kit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #f8fafb 0%, #e8f4f8 100%);
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #6ba3d6 0%, #4a90c2 100%);
+            color: white;
+            padding: 2rem 2.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: gentle-float 20s ease-in-out infinite;
+        }
+
+        @keyframes gentle-float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(180deg); }
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            font-weight: 300;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        .content {
+            padding: 2.5rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            page-break-inside: avoid;
+        }
+
+        .section h2 {
+            color: #34495e;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #7fb3d3;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section h3 {
+            color: #5a6c7d;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin: 1.5rem 0 0.8rem 0;
+        }
+
+        .welcome-section {
+            background: linear-gradient(135deg, #f0f7fa 0%, #e8f4f8 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #7fb3d3;
+            margin-bottom: 2rem;
+        }
+
+        .welcome-section p {
+            font-size: 1.1rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .checklist-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        @media print {
+            .checklist-container {
+                page-break-inside: avoid;
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        .checklist-column {
+            background: #fafbfc;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #e8f0f3;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.8rem;
+            padding: 0.5rem 0;
+        }
+
+        .checkbox {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #7fb3d3;
+            border-radius: 4px;
+            margin-right: 0.8rem;
+            margin-top: 0.1rem;
+            flex-shrink: 0;
+            background: white;
+        }
+
+        .checklist-item label {
+            font-size: 0.95rem;
+            color: #34495e;
+            cursor: pointer;
+            line-height: 1.4;
+        }
+
+        .notes-space {
+            border: 1px dashed #bdc3c7;
+            border-radius: 6px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            background: #fafbfc;
+            min-height: 60px;
+            position: relative;
+        }
+
+        @media print {
+            .notes-space {
+                margin: 1rem 0;
+                min-height: 50px;
+                page-break-inside: avoid;
+            }
+        }
+
+        .notes-space::before {
+            content: 'Notes:';
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            background: white;
+            padding: 0 8px;
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            font-weight: 500;
+        }
+
+        .organization-tips {
+            background: linear-gradient(135deg, #f8fdf9 0%, #e8f5e8 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #86c695;
+            margin: 2rem 0;
+        }
+
+        .tip-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            background: rgba(255,255,255,0.6);
+            border-radius: 6px;
+        }
+
+        .tip-icon {
+            width: 24px;
+            height: 24px;
+            background: #86c695;
+            border-radius: 50%;
+            margin-right: 1rem;
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        .closing-section {
+            background: linear-gradient(135deg, #fdf8f0 0%, #f9f0e8 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #e6b87d;
+            text-align: center;
+            margin-top: 2rem;
+            page-break-inside: avoid;
+        }
+
+        .closing-section h2 {
+            color: #8b6f3f;
+            border: none;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .closing-section p {
+            font-size: 1.1rem;
+            color: #5d4e37;
+            margin-bottom: 1rem;
+        }
+
+        .emoji {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+
+        @media print {
+            body {
+                background: white;
+                color: #000;
+            }
+            
+            .container {
+                box-shadow: none;
+                max-width: none;
+            }
+            
+            .header {
+                background: #4a90c2 !important;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+            
+            .checklist-container {
+                page-break-inside: avoid;
+            }
+            
+            .closing-section {
+                page-break-inside: avoid;
+            }
+        }
+
+        @page {
+            margin: 0.75in;
+            size: letter;
+        }
+
+        .header-footer {
+            position: fixed;
+            left: 0;
+            right: 0;
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            z-index: 1000;
+        }
+
+        .print-footer {
+            bottom: 0.25in;
+            padding: 0 0.75in;
+            border-top: 1px solid #e8f0f3;
+            background: white;
+            height: 0.6in;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 0.1in;
+        }
+
+        .mpath-logo {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            color: #4a90c2;
+        }
+
+        .mpath-icon {
+            background: #4a90c2;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-right: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        .copyright-info {
+            font-size: 0.7rem;
+            color: #95a5a6;
+        }
+
+        @media screen {
+            .header-footer {
+                display: none;
+            }
+        }
+
+        @media print {
+            .header-footer {
+                display: flex;
+            }
+            
+            .content {
+                margin-bottom: 0.7in;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Print Footer -->
+    <div class="header-footer print-footer">
+        <div class="mpath-logo">
+            Your Overwhelm Rescue Kit
+        </div>
+        <div class="copyright-info">© 2025 mPath Services. All rights reserved. For personal use only.</div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Your Overwhelm Rescue Kit</h1>
+            <p class="subtitle">A gentle guide through life's big transitions</p>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <div class="welcome-section">
+                    <p><strong>Take a deep breath.</strong> You're not alone in feeling overwhelmed during big life changes.</p>
+                    <p>Whether you're moving, going through a divorce, caring for a loved one, or navigating a job change, it's completely normal to feel like you're drowning in paperwork and to-do lists. This guide isn't about being perfect—it's about taking one small step at a time to create some order in the chaos.</p>
+                    <p>Remember: You don't have to do everything at once. Pick what feels most urgent today, and let the rest wait. You've got this. 💙</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2><span class="emoji">📋</span>Essential Documents & Accounts to Gather</h2>
+                <p>Start with what you can easily find. Don't stress about missing items—you can always add them later.</p>
+                
+                <div class="checklist-container">
+                    <div class="checklist-column">
+                        <h3>Financial Documents</h3>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Bank statements (last 3 months)</label>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Credit card statements</label>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Investment/retirement accounts</label>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Tax returns (last 2 years)</label>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Insurance policies</label>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Important contracts</label>
+                        </div>
+
+                        <h3>Medical Records</h3>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Health insurance cards</label>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Prescription lists</label>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Medical history summaries</label>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Emergency contacts</label>
+                        </div>
+                    </div>
+
+                    <div class="checklist-column">
+                        <h3>Home & Legal</h3>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Lease/mortgage documents</label>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Utility account info</label>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Property deeds/titles</label>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Birth certificates</label>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Social Security cards</label>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Passport/driver's license</label>
+                        </div>
+
+                        <h3>Digital & Subscriptions</h3>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Password manager or list</label>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Streaming services</label>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Phone/internet providers</label>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Cloud storage accounts</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="notes-space"></div>
+            </div>
+
+            <div class="section">
+                <h2><span class="emoji">📞</span>Who to Notify Starter List</h2>
+                <p>You don't need to contact everyone at once. Start with the most critical, then work through the rest as you have time.</p>
+                
+                <div class="checklist-container">
+                    <div class="checklist-column">
+                        <h3>Essential First</h3>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Bank(s)</label>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Credit card companies</label>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Insurance companies</label>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Employer/HR department</label>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Healthcare providers</label>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Children's schools</label>
+                        </div>
+                    </div>
+
+                    <div class="checklist-column">
+                        <h3>Services & Others</h3>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Utilities (electric, gas, water)</label>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Internet/cable provider</label>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Postal service (mail forwarding)</label>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>DMV/voter registration</label>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Close family & friends</label>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="checkbox"></div>
+                            <label>Subscription services</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="notes-space"></div>
+            </div>
+
+            <div class="section">
+                <div class="organization-tips">
+                    <h2><span class="emoji">🗂️</span>Simple Organization Tips</h2>
+                    <p>Keep it simple. The best system is the one you'll actually use.</p>
+                    
+                    <div class="tip-item">
+                        <div class="tip-icon">1</div>
+                        <div>
+                            <strong>Start with just 3 folders:</strong> "Urgent," "Important," and "Later." You can always get more specific as you go.
+                        </div>
+                    </div>
+                    
+                    <div class="tip-item">
+                        <div class="tip-icon">2</div>
+                        <div>
+                            <strong>Use color codes:</strong> Red for urgent, blue for financial, green for medical, yellow for legal. Whatever makes sense to you.
+                        </div>
+                    </div>
+                    
+                    <div class="tip-item">
+                        <div class="tip-icon">3</div>
+                        <div>
+                            <strong>Digital photos work:</strong> Don't feel pressure to organize physical papers perfectly. Phone photos stored in folders can be just as effective.
+                        </div>
+                    </div>
+                    
+                    <div class="tip-item">
+                        <div class="tip-icon">4</div>
+                        <div>
+                            <strong>One inbox rule:</strong> Pick one place (physical tray or digital folder) where everything goes first. Sort from there when you have time.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="notes-space"></div>
+            </div>
+
+            <div class="closing-section">
+                <h2><span class="emoji">🌱</span>One Step at a Time</h2>
+                <p>Life transitions are hard, and feeling overwhelmed is part of the process. You're doing better than you think.</p>
+                <p>This isn't a race. Some days you might check off five things, other days none—and that's okay. What matters is that you're moving forward, even if it's slowly.</p>
+                <p><strong>Remember:</strong> You don't have to have it all figured out right now. Just take the next small step. You're stronger than you know, and this overwhelming time will pass.</p>
+                <p>💙 You've got this. One breath, one task, one day at a time.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
